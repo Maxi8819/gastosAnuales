@@ -21,7 +21,13 @@ public class GastosAnuales {
 	
 	
 	
-
+	/**	
+	 * Genera un arrgelo bidimensional consolidando en una sola estructura todos los gastos del anio
+	 * La matriz mide la cantidad de meses x ani x la cantidad de rubros existentes y cada celda contiene el
+	 * importe acumulado para el rubro en ese mes
+	 * 
+	 * @return matriz
+	 */
 
 	private double[][] consolidadoDeGastos() {
 		int col_r = rubros.size();
