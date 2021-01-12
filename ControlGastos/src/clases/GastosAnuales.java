@@ -15,7 +15,20 @@ public class GastosAnuales {
 	/**
 	 * muestra los consumos por mes (Discriminando x cada rubro de gasto y acumulado)
 	 */
-	public void informarConsumoXmes() {
+	public void informarConsumoXmes() {	
+	
+		double[][] matriz = consolidadoDeGastos();
+		for (int i = 0; i < matriz.length; i++) {
+			Rubro r = rubros.get(i);
+			for (int j = 0; j < matriz[i].length; j++) {
+				Mes[] m = Mes.values();
+				Mes mes = m[j];
+				double total = matriz[i][j] = r.getTotalGastos(mes);
+				System.out.printf(r.toString(),j);
+				
+			}
+			
+		}
 		
 	}
 	

@@ -13,6 +13,7 @@ public class Test {
 		g.agregarGasto(Mes.JUNIO, "Cumple isa", 5000);
 		System.out.println(g.gastoAcumulado(Mes.DICIEMBRE));
 		System.out.println(g.gastoAcumulado("Fiestas"));
+		g.informarConsumoXmes();
 
 	}
 
