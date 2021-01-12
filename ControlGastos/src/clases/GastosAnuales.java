@@ -20,14 +20,22 @@ public class GastosAnuales {
 		double[][] matriz = consolidadoDeGastos();
 		for (int i = 0; i < matriz.length; i++) {
 			Rubro r = rubros.get(i);
+			System.out.printf(r.getNombre());
+			System.out.println();
 			for (int j = 0; j < matriz[i].length; j++) {
 				Mes[] m = Mes.values();
 				Mes mes = m[j];
 				double total = matriz[i][j] = r.getTotalGastos(mes);
-				System.out.printf(r.toString(),j);
+				if(total>0) {
+				System.out.println(mes);
+				System.out.print(matriz[i][j]);
+				System.out.println();
+				}
+			
+			
 				
 			}
-			
+			System.out.println();
 		}
 		
 	}
