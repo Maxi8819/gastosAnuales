@@ -11,43 +11,70 @@ public class GastosAnuales {
 	public GastosAnuales() {
 		this.rubros = new ArrayList<Rubro>();
 	}
+
 	
 	
-	/**	
+	
+	
+	
+	
+	
+	
+	/**
 	 * Muestro los consumos promedios por mes en cada rubro
 	 *
-	 si el total del ruboro es tanto, el 100% es el gasto total anual dividido por el total de rubros 
-	 * @return 
-	
-	**/
-	public double informarPromedioMensual() {
-		double totalAnual=0;
+	 * si el total del ruboro es tanto, el 100% es el gasto total anual dividido por
+	 * el total de rubros
+	 * 
+	 * @return
+	 * 
+	 **/
+
+	public void informarPromedioMensualXrubro() {
+		double totalAnual = gastoTotalAnual();
+		double[][] matriz = consolidadoDeGastos();
+
+		for (int i = 0; i < matriz.length; i++) {
+			Rubro r = rubros.get(i);
+			System.out.printf(r.getNombre());
+			System.out.println();
+			for (int j = 0; j < matriz[i].length; j++) {
+				Mes[] m = Mes.values();
+				Mes mes = m[j];
+				double total = matriz[i][j] = r.getTotalGastos(mes);
+				double promedio = (total * 100) / totalAnual;
+				if (promedio > 0) {
+					System.out.println(mes);
+					System.out.printf("%.2f", promedio);
+					System.out.println();
+				}
+			}
+
+		}
+		System.out.println();
+	}
+
+	public double gastoTotalAnual() {
+		double totalAnual = 0;
 		double[][] matriz = consolidadoDeGastos();
 		for (int i = 0; i < matriz.length; i++) {
 			Rubro r = rubros.get(i);
-			//System.out.printf(r.getNombre());
-			//System.out.println();
 			for (int j = 0; j < matriz[i].length; j++) {
 				Mes[] m = Mes.values();
 				Mes mes = m[j];
 				totalAnual += matriz[i][j] = r.getTotalGastos(mes);
-				
-			
-			
-				
+
 			}
-			System.out.println();
 		}
 		return totalAnual;
 	}
-	
 
-	
 	/**
-	 * muestra los consumos por mes (Discriminando x cada rubro de gasto y acumulado)
+	 * muestra los consumos por mes (Discriminando x cada rubro de gasto y
+	 * acumulado)
 	 */
-	public void informarConsumoXmes() {	
-	
+	public void informarConsumoXmes() {
+
 		double[][] matriz = consolidadoDeGastos();
 		for (int i = 0; i < matriz.length; i++) {
 			Rubro r = rubros.get(i);
@@ -57,26 +84,23 @@ public class GastosAnuales {
 				Mes[] m = Mes.values();
 				Mes mes = m[j];
 				double total = matriz[i][j] = r.getTotalGastos(mes);
-				if(total>0) {
-				System.out.println(mes);
-				System.out.print(matriz[i][j]);
-				System.out.println();
+				if (total > 0) {
+					System.out.println(mes);
+					System.out.print(matriz[i][j]);
+					System.out.println();
 				}
-			
-			
-				
+
 			}
 			System.out.println();
 		}
-		
+
 	}
-	
-	
-	
-	/**	
-	 * Genera un arrgelo bidimensional consolidando en una sola estructura todos los gastos del anio
-	 * La matriz mide la cantidad de meses x ani x la cantidad de rubros existentes y cada celda contiene el
-	 * importe acumulado para el rubro en ese mes
+
+	/**
+	 * Genera un arrgelo bidimensional consolidando en una sola estructura todos los
+	 * gastos del anio La matriz mide la cantidad de meses x ani x la cantidad de
+	 * rubros existentes y cada celda contiene el importe acumulado para el rubro en
+	 * ese mes
 	 * 
 	 * @return matriz
 	 */
