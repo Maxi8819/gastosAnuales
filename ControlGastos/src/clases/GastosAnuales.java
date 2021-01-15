@@ -12,6 +12,37 @@ public class GastosAnuales {
 		this.rubros = new ArrayList<Rubro>();
 	}
 	
+	
+	/**	
+	 * Muestro los consumos promedios por mes en cada rubro
+	 *
+	 si el total del ruboro es tanto, el 100% es el gasto total anual dividido por el total de rubros 
+	 * @return 
+	
+	**/
+	public double informarPromedioMensual() {
+		double totalAnual=0;
+		double[][] matriz = consolidadoDeGastos();
+		for (int i = 0; i < matriz.length; i++) {
+			Rubro r = rubros.get(i);
+			//System.out.printf(r.getNombre());
+			//System.out.println();
+			for (int j = 0; j < matriz[i].length; j++) {
+				Mes[] m = Mes.values();
+				Mes mes = m[j];
+				totalAnual += matriz[i][j] = r.getTotalGastos(mes);
+				
+			
+			
+				
+			}
+			System.out.println();
+		}
+		return totalAnual;
+	}
+	
+
+	
 	/**
 	 * muestra los consumos por mes (Discriminando x cada rubro de gasto y acumulado)
 	 */
