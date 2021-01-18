@@ -45,7 +45,7 @@ public class GastosAnuales {
 				double promedio = (total * 100) / totalAnual;
 				if (promedio > 0) {
 					System.out.println(mes);
-					System.out.printf("%.2f", promedio);
+					System.out.printf("%.2f", promedio+" porciento");
 					System.out.println();
 				}
 			}
