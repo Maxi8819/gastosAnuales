@@ -12,7 +12,70 @@ public class GastosAnuales {
 		this.rubros = new ArrayList<Rubro>();
 	}
 
+<<<<<<< HEAD
+=======
+	
+	
+	
+	
+	
+	
+	
+	
+>>>>>>> branch 'master' of https://github.com/Maxi8819/gastosAnuales.git
 	/**
+<<<<<<< HEAD
+=======
+	 * Muestro los consumos promedios por mes en cada rubro
+	 *
+	 * si el total del ruboro es tanto, el 100% es el gasto total anual dividido por
+	 * el total de rubros
+	 * 
+	 * @return
+	 * 
+	 **/
+
+	public void informarPromedioMensualXrubro() {
+		double totalAnual = gastoTotalAnual();
+		double[][] matriz = consolidadoDeGastos();
+
+		for (int i = 0; i < matriz.length; i++) {
+			Rubro r = rubros.get(i);
+			System.out.printf(r.getNombre());
+			System.out.println();
+			for (int j = 0; j < matriz[i].length; j++) {
+				Mes[] m = Mes.values();
+				Mes mes = m[j];
+				double total = matriz[i][j] = r.getTotalGastos(mes);
+				double promedio = (total * 100) / totalAnual;
+				if (promedio > 0) {
+					System.out.println(mes);
+					System.out.printf("%.2f", promedio);
+					System.out.println();
+				}
+			}
+
+		}
+		System.out.println();
+	}
+
+	public double gastoTotalAnual() {
+		double totalAnual = 0;
+		double[][] matriz = consolidadoDeGastos();
+		for (int i = 0; i < matriz.length; i++) {
+			Rubro r = rubros.get(i);
+			for (int j = 0; j < matriz[i].length; j++) {
+				Mes[] m = Mes.values();
+				Mes mes = m[j];
+				totalAnual += matriz[i][j] = r.getTotalGastos(mes);
+
+			}
+		}
+		return totalAnual;
+	}
+
+	/**
+>>>>>>> branch 'master' of https://github.com/Maxi8819/gastosAnuales.git
 	 * muestra los consumos por mes (Discriminando x cada rubro de gasto y
 	 * acumulado)
 	 */
@@ -26,6 +89,7 @@ public class GastosAnuales {
 			for (int j = 0; j < matriz[i].length; j++) {
 				Mes[] m = Mes.values();
 				Mes mes = m[j];
+<<<<<<< HEAD
 				double total = 0;
 				
 				if (total > 0) {
@@ -34,6 +98,13 @@ public class GastosAnuales {
 					
 					System.out.println();
 					System.out.println("Mensual total: " + total);
+=======
+				double total = matriz[i][j] = r.getTotalGastos(mes);
+				if (total > 0) {
+					System.out.println(mes);
+					System.out.print(matriz[i][j]);
+					System.out.println();
+>>>>>>> branch 'master' of https://github.com/Maxi8819/gastosAnuales.git
 				}
 
 			}

@@ -14,7 +14,8 @@ public class Test {
 		System.out.println(g.gastoAcumulado(Mes.DICIEMBRE));
 		System.out.println(g.gastoAcumulado("Fiestas"));
 		g.informarConsumoXmes();
-
+		System.out.println(g.gastoTotalAnual());
+		g.informarPromedioMensualXrubro();
 	}
 
 }
